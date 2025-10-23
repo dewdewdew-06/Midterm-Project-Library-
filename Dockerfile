@@ -29,5 +29,8 @@ RUN chmod -R 777 storage bootstrap/cache
 # Expose port 8080
 EXPOSE 8080
 
+# Run migrations (ignore if already migrated)
+RUN php artisan migrate --force || true
+
 # Start Apache
 CMD ["apache2-foreground"]
