@@ -9,19 +9,16 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    // Show login page
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    // Show register page
     public function showRegister()
     {
         return view('auth.register');
     }
 
-    // Handle registration
     public function register(Request $request)
     {
         $request->validate([
@@ -39,7 +36,6 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'Account created! Please log in.');
     }
 
-    // Handle login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -57,7 +53,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // Handle logout
     public function logout(Request $request)
     {
         Auth::logout();
