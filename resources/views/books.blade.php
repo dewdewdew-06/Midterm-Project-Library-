@@ -7,7 +7,7 @@
 
 //filter, sort, search
 <form method="GET" action="{{ route('books.index') }}" style="margin-bottom: 20px;">
-    {{-- 🔹 Genre Filter --}}
+    //genre filter
     <label>Genre:</label>
     <select name="genre" onchange="this.form.submit()">
         <option value="all">All</option>
