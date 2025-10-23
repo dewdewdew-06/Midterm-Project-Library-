@@ -10,18 +10,21 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var/www/html
 
 # Copy all project files into the container
-COPY . .
+COPY ./ /var/www/html
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer install --no-dev --optimize-autoloader
+    composer install --no-dev --optimize-autoloader --no-interaction
 
 # Generate Laravel app key
 RUN php artisan key:generate || true
 
+# Fix permissions for Laravel
+RUN chmod -R 777 storage bootstrap/cache
+
 # Expose port 8080
 EXPOSE 8080
 
-# Start Apache (instead of php artisan serve)
+# Start Apache
 CMD ["apache2-foreground"]
