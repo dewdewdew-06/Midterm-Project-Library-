@@ -5,7 +5,7 @@
 @section('content')
 <h1>Available Books</h1>
 
-{{-- ✅ Filter, Sort, Search --}}
+//filter, sort, search
 <form method="GET" action="{{ route('books.index') }}" style="margin-bottom: 20px;">
     {{-- 🔹 Genre Filter --}}
     <label>Genre:</label>
@@ -18,28 +18,28 @@
         @endforeach
     </select>
 
-    {{-- 🔹 Sort Toggle --}}
+    //sort toggle
     <label style="margin-left: 20px;">Sort:</label>
     <input type="hidden" name="sort" value="{{ request('sort') == 'asc' ? '' : 'asc' }}">
     <button type="submit">
         {{ request('sort') == 'asc' ? 'Reset' : 'A → Z' }}
     </button>
 
-    {{-- 🔹 Search --}}
+    //search
     <label style="margin-left: 20px;">Search:</label>
     <input type="text" name="search" value="{{ request('search') }}" placeholder="Book title...">
     <button type="submit">🔍</button>
 
-    {{-- 🔹 Randomize Highlight --}}
+    //randomize book
     <button type="button" id="randomBtn" style="margin-left: 20px;">🎲 Random Highlight</button>
 </form>
 
-{{-- 🟢 Add New Book --}}
+//add new book
 <a href="{{ route('books.create') }}" style="display:inline-block; margin-top:15px; font-weight:bold; text-decoration:none;">
     ➕ Add New Book
 </a>
 
-{{-- ✅ Table --}}
+//table
 <table id="booksTable" border="1" cellpadding="10" style="margin-top:20px;">
     <tr>
         <th>ID</th>
